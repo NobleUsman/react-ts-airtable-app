@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
+import { useAppSelector } from './app/hooks';
+import Login from './Components/Login';
+import Logout from './Components/Logout';
+import { selectStudent } from './features/student/studentSlice';
 
-function App() {
+const App: React.FC = () => {
+
+  const selector = useAppSelector(selectStudent); // cant use this object to show as at first its null, so, we stringify and parse
+  const selectorString = JSON.stringify(selector);
+  const payload = JSON.parse(selectorString)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload. EHEHE
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {
+      // if student present (logged in), show logout component, else login component
+      payload ? <Logout/> : <Login/>
+    }
+    </>
   );
 }
 
