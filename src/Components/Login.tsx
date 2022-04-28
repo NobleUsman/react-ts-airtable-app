@@ -3,7 +3,7 @@ import { useAppDispatch } from '../app/hooks';
 import { login } from '../features/student/studentSlice';
 import "./Login.scss";
 
-const Login = () => {
+const Login: React.FC = () => {
 
     const [name, setName] = useState("");
 
@@ -14,6 +14,7 @@ const Login = () => {
       e.preventDefault();
 
       // send payload on button click ( submission ), so using dispatch from useAppDispatch() hook, call login method, create & pass the payload
+      // updating the state with the payload (state will change from "null" to the provided payload)
       dispatch(login({
         name: name, // sending the name that we got from the form input
         loggedIn: true, // to toggle through login/logout
