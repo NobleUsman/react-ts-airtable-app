@@ -7,7 +7,7 @@ const Logout: React.FC = () => {
 
   const selector = useAppSelector(selectStudent);
   const dispatch = useAppDispatch();
-
+  
   return (
     <div>
         <h1>
